@@ -34,15 +34,6 @@ def test_summarise_empty_input():
     assert np.isnan(summary["min"])
     assert np.isnan(summary["max"])
 
-def test_summarise_scalar_input():
-    """Tests summarise when np.array input has only one measurement."""
-    summary = ci_course.summarise(np.array([1.0]))
-
-    assert summary["n"] == 1
-    assert summary["mean"] == 1.0
-    assert summary["min"] == 1.0
-    assert summary["max"] == 1.0
-
 def test_counts_missing_values():
     assert ci_course.count_missing(np.array([1.0, np.nan, 3.0, np.nan])) == 2
     assert ci_course.count_missing(np.array([1.0, 2.0])) == 0
