@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  python-tests:
+  docstrings:
     runs-on: ubuntu-latest
 
     steps:
