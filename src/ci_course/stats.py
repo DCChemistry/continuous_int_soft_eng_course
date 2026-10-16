@@ -45,7 +45,7 @@ def count_missing(values):
     Parameters
     ----------
     values : array_like
-        An array to be checked for missing values.
+        An array to be checked for missing values. Missing values should be ``nan``.
 
     Returns
     -------
