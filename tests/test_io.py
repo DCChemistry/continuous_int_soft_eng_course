@@ -1,4 +1,5 @@
 import numpy as np
+import numpy.testing as npt
 
 import ci_course
 
@@ -26,3 +27,11 @@ def test_reads_a_file_given_by_path(tmp_path):
 
     assert list(data) == ["height_m"]
     assert data["height_m"].tolist() == [1.5, 2.5]
+
+def test_unparseable_values_are_recorded(tmp_path):
+    bad_csv = tmp_path / "unparseable.csv"
+    bad_csv.write_text("sample_id,height_m\nA,blue\nB,2.5\n", encoding="utf-8")
+
+    data = ci_course.load_measurements(bad_csv)
+
+    assert np.isnan(data["height_m"][0])
